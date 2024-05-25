@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <h3 class="title">{{ appTitle }}:</h3>
-    <button @click="decreaseCounter" class="btn">-</button>
+    <button @click="decreaseCounter(5)" class="btn">--</button>
+    <button @click="decreaseCounter(1)" class="btn">-</button>
     <span class="counter">{{ counterData.count }}</span>
-    <button @click="increaseCounter" class="btn">+</button>
-
+    <button @click="increaseCounter(1, $event)" class="btn">+</button>
+    <button @click="increaseCounter(5)" class="btn">++</button>
   </div>
 
 
@@ -16,12 +17,11 @@ import { reactive, ref } from 'vue'
 const appTitle = "My OK Counter App"
 
 // All code will go inside setup function.
-const increaseCounter = () => {
-  counterData.count++
+const increaseCounter = (amount: number, e?: MouseEvent) => {
+  counterData.count = counterData.count + amount
 }
-
-const decreaseCounter = () => {
-  counterData.count--
+const decreaseCounter = (amount: number) => {
+  counterData.count = counterData.count - amount
 }
 
 const counterData = reactive({
