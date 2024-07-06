@@ -7,13 +7,19 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppBar: typeof import('./src/components/AppBar.vue')['default']
+    AppBar: typeof import('./src/components/header/AppBar.vue')['default']
     DropdownItems: typeof import('./src/components/DropdownItems.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    NavBar: typeof import('./src/components/NavBar.vue')['default']
-    NavDrawer: typeof import('./src/components/NavDrawer.vue')['default']
-    NavItem: typeof import('./src/components/NavItem.vue')['default']
+    NavBar: typeof import('./src/components/header/NavBar.vue')['default']
+    NavDrawer: typeof import('./src/components/header/NavDrawer.vue')['default']
+    NavItem: typeof import('./src/components/header/NavItem.vue')['default']
     NavItems: typeof import('./src/components/NavItems.vue')['default']
+    NewNote: typeof import('./src/components/notes/NewNote.vue')['default']
+    NewNoteActions: typeof import('./src/components/notes/NewNoteActions.vue')['default']
+    Note: typeof import('./src/components/notes/Note.vue')['default']
+    NoteActions: typeof import('./src/components/notes/NoteActions.vue')['default']
+    NoteButtons: typeof import('./src/components/notes/NoteButtons.vue')['default']
+    Notes: typeof import('./src/components/notes/Notes.vue')['default']
     NotesView: typeof import('./src/components/NotesView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

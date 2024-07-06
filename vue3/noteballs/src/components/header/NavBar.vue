@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import NavItem, {NavItemEntry} from "@/components/NavItem.vue"
+import NavItem, {NavItemEntry} from "@/components/header/NavItem.vue"
 
 defineProps<{
   navItems: NavItemEntry[],
@@ -20,5 +20,6 @@ defineProps<{
 .nav-bar {
   display: flex;
   gap: 1rem;
+  margin-right: 1rem;
 }
 </style>

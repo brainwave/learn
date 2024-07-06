@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type {NavItemEntry} from "@/components/NavItem.vue"
+import type {NavItemEntry} from "@/components/header/NavItem.vue"
 
 defineProps<{
   navItems: NavItemEntry[]

@@ -1,16 +1,22 @@
 <template>
   <v-app>
-    <AppBar />
+    <AppBar/>
     <v-main>
-      <v-container>
-        <RouterView />
+      <v-container class="margin-initial">
+        <RouterView/>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
-import AppBar from "@/components/AppBar.vue";
-import { RouterView } from "vue-router";
+import AppBar from "@/components/header/AppBar.vue";
+import {RouterView} from "vue-router";
 </script>
+
+<style scoped>
+.margin-initial {
+  margin: initial;
+}
+</style>
