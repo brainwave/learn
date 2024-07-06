@@ -14,5 +14,9 @@ declare module 'vue' {
     NavDrawer: typeof import('./src/components/NavDrawer.vue')['default']
     NavItem: typeof import('./src/components/NavItem.vue')['default']
     NavItems: typeof import('./src/components/NavItems.vue')['default']
+    NotesView: typeof import('./src/components/NotesView.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    StatsView: typeof import('./src/components/StatsView.vue')['default']
   }
 }

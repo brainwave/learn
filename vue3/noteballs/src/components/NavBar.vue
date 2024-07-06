@@ -3,13 +3,12 @@ import NavItem from "@/components/NavItem.vue";
 
 defineProps<{
   navItems: string[],
-  availableWidth: number
 }>()
 </script>
 
 <template>
   <div class="nav-bar">
-    <NavItem v-for="item in navItems" :navItem="item" :key="item"/>
+    <NavItem v-for="item in navItems" :navItem="item.title" :key="item"/>
   </div>
 </template>
 
