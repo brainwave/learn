@@ -1,8 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
-import {ref, watch} from "vue";
+import {ref} from "vue";
 import NavBar from "@/components/NavBar.vue";
 import NavDrawer from "@/components/NavDrawer.vue";
+import type {NavItemEntry} from "@/components/NavItem.vue"
 
 const drawer = ref(false)
 
@@ -10,29 +11,33 @@ const toggleDrawer = () => {
   drawer.value = !drawer.value
 }
 
-const navItems = [
+const navItems: NavItemEntry[] = [
   {
     title: 'Notes',
-    path : '/notes'
+    path: '/notes'
   },
   {
     title: 'Stats',
-    path : '/stats'
+    path: '/stats'
   }
 ]
+
+const activeItemNumber = ref(0)
 
 </script>
 
 <template>
 
-      <v-app-bar color="primary" prominent :elevation="2">
-        <v-app-bar-nav-icon variant="text" @click.stop="toggleDrawer" class="nav-drawer"
-                            v-if="$vuetify.display.mdAndDown"></v-app-bar-nav-icon>
-        <v-toolbar-title class="title">Noteballs</v-toolbar-title>
-        <NavDrawer v-if="drawer" :navItems="navItems"/>
-        <v-spacer></v-spacer>
-        <NavBar v-if="$vuetify.display.lgAndUp" :navItems="navItems"/>
-      </v-app-bar>
+  <v-app-bar :elevation="2" color="primary" prominent>
+    <v-app-bar-nav-icon v-if="$vuetify.display.mdAndDown" class="nav-drawer" variant="text"
+                        @click.stop="toggleDrawer"></v-app-bar-nav-icon>
+    <v-toolbar-title class="title">Noteballs</v-toolbar-title>
+    <NavDrawer v-if="drawer" :navItems="navItems" @activeChanged="(index)=>{activeItemNumber=index}"
+               @click="drawer = !drawer"/>
+    <v-spacer></v-spacer>
+    <NavBar v-if="$vuetify.display.lgAndUp" :activeNumber="activeItemNumber" :navItems="navItems"
+            @activeChanged="(index)=>{activeItemNumber=index}"/>
+  </v-app-bar>
 
 </template>
 

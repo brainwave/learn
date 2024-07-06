@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <AppBar/>
+    <AppBar />
     <v-main>
       <v-container>
-        <RouterView/>
+        <RouterView />
       </v-container>
     </v-main>
   </v-app>
@@ -12,5 +12,5 @@
 <script setup lang="ts">
 
 import AppBar from "@/components/AppBar.vue";
-import {RouterView} from "vue-router";
+import { RouterView } from "vue-router";
 </script>

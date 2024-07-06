@@ -1,14 +1,18 @@
-<script setup lang="ts">
-import NavItem from "@/components/NavItem.vue";
+<script lang="ts" setup>
+import NavItem, {NavItemEntry} from "@/components/NavItem.vue"
 
 defineProps<{
-  navItems: string[],
+  navItems: NavItemEntry[],
+  activeNumber: number
 }>()
+
 </script>
 
 <template>
   <div class="nav-bar">
-    <NavItem v-for="item in navItems" :navItem="item.title" :key="item"/>
+    <NavItem v-for="(item, index) in navItems" :key="item.title"
+             :active="index===activeNumber" :navItem="item" :path="item.path" :title="item.title"
+             @click="$emit('activeChanged',index)"/>
   </div>
 </template>
 
@@ -17,5 +21,4 @@ defineProps<{
   display: flex;
   gap: 1rem;
 }
-
 </style>
