@@ -2,41 +2,46 @@
 
 import {NoteEntry} from "@/const/notes";
 import {computed, ref} from "vue";
+import NoteActions from "@/components/notes/NoteActions.vue";
 
 const props = defineProps<{
   noteEntry: NoteEntry
 }>()
 
-const charLimit = 445;
+const charLimit = 537;
 const isNoteTooBig = computed(() => {
   return props.noteEntry.content.length > charLimit
 })
 
 const shortContent = computed(() => {
-  return props.noteEntry.content.slice(0, charLimit)
+  return props.noteEntry.content.slice(0, charLimit - 6) + "..."
 })
 
 const expanded = ref(false)
 </script>
 
 <template>
-  <v-card hover variant="tonal" @click="expanded=!expanded">
+  <v-card :ripple="false" variant="tonal">
     <v-container fluid>
       <v-row dense>
-        <v-card-title class="text-subtitle-2">{{ props.noteEntry.title }}</v-card-title>
+        <v-card-title class="text-subtitle-2" @click="expanded=!expanded">
+          <v-btn class="noteAction" variant="text">
+            {{ props.noteEntry.title }}
+          </v-btn>
+        </v-card-title>
         <v-card-text class="noteText">
           {{ isNoteTooBig && !expanded ? shortContent : props.noteEntry.content }}
-        </v-card-text>
-        <v-card-actions v-if="isNoteTooBig">
-          <v-btn class="ms-2" size="small" @click.stop="expanded=!expanded">
+          <v-btn v-if=isNoteTooBig class="noteAction" variant="plain" @click.stop="expanded=!expanded">
             <v-icon v-if="!expanded" icon="mdi-chevron-down"></v-icon>
             <v-icon v-if="expanded" icon="mdi-chevron-up"></v-icon>
           </v-btn>
+        </v-card-text>
+        <v-card-actions class="noteActions">
+          <NoteActions :expanded="expanded" @expandButtonClicked="expanded=!expanded"/>
         </v-card-actions>
       </v-row>
     </v-container>
   </v-card>
-
   <v-divider></v-divider>
 
 </template>
@@ -47,6 +52,14 @@ const expanded = ref(false)
 }
 
 .text-subtitle-2 {
+  padding: 0;
+}
+
+.noteAction {
+  padding: 0;
+}
+
+.noteActions {
   padding: 0;
 }
 </style>
