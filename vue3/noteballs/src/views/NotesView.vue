@@ -1,6 +1,5 @@
 <template>
   <NewNote/>
-  <v-divider></v-divider>
   <v-container class="noteActions">
     <NewNoteActions/>
   </v-container>

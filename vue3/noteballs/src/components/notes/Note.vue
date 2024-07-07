@@ -14,31 +14,41 @@ const isNoteTooBig = computed(() => {
 })
 
 const shortContent = computed(() => {
-  return props.noteEntry.content.slice(0, charLimit - 6) + "..."
+  return props.noteEntry.content.slice(0, charLimit - 7) + "..."
 })
 
 const expanded = ref(false)
+const beingEdited = ref(false)
+const beingDeleted = ref(false)
+
 </script>
 
 <template>
   <v-card :ripple="false" variant="tonal">
     <v-container fluid>
-      <v-row dense>
-        <v-card-title class="text-subtitle-2" @click="expanded=!expanded">
-          <v-btn class="noteAction" variant="text">
-            {{ props.noteEntry.title }}
-          </v-btn>
-        </v-card-title>
-        <v-card-text class="noteText">
-          {{ isNoteTooBig && !expanded ? shortContent : props.noteEntry.content }}
-          <v-btn v-if=isNoteTooBig class="noteAction" variant="plain" @click.stop="expanded=!expanded">
-            <v-icon v-if="!expanded" icon="mdi-chevron-down"></v-icon>
-            <v-icon v-if="expanded" icon="mdi-chevron-up"></v-icon>
-          </v-btn>
-        </v-card-text>
-        <v-card-actions class="noteActions">
-          <NoteActions :expanded="expanded" @expandButtonClicked="expanded=!expanded"/>
-        </v-card-actions>
+      <v-row>
+        <v-col>
+          <v-card-title class="text-subtitle-2" @click="expanded=!expanded">
+            <v-btn class="noteAction" variant="text">
+              {{ props.noteEntry.title }}
+            </v-btn>
+          </v-card-title>
+          <v-card-text v-if="!beingEdited" class="noteText">
+            {{ isNoteTooBig && !expanded ? shortContent : props.noteEntry.content }}
+          </v-card-text>
+          <v-textarea v-else :model-value="props.noteEntry.content" :rows="isNoteTooBig ? 10 : 5"
+                      class="noteText"
+                      clearable counter outlined variant="plain"></v-textarea>
+          <v-card-actions class="noteAction">
+            <v-spacer></v-spacer>
+            <NoteActions :beingEdited="beingEdited" :expandEnabled="isNoteTooBig"
+                         :expanded="expanded"
+                         @editButtonClicked="beingEdited = true"
+                         @expandButtonClicked="expanded=!expanded"
+                         @saveButtonClicked="beingEdited = false"/>
+            1
+          </v-card-actions>
+        </v-col>
       </v-row>
     </v-container>
   </v-card>
@@ -56,10 +66,6 @@ const expanded = ref(false)
 }
 
 .noteAction {
-  padding: 0;
-}
-
-.noteActions {
   padding: 0;
 }
 </style>
