@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "c0-python-for-data-science"
+version = "0.1.0"
+description = "Package for Python for Data Science. Course 0 of Semester 1, bits pilani mtech ai ml program."
+authors = ["Brahm Prakash Mishra"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
