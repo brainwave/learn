@@ -1,17 +1,15 @@
-[tool.poetry]
-name = "c0-python-for-data-science"
+[project]
+name = "C0_Python_For_Data_Science"
 version = "0.1.0"
-description = "Package for Python for Data Science. Course 0 of Semester 1, bits pilani mtech ai ml program."
-authors = ["Brahm Prakash Mishra"]
+description = "Default template for PDM package"
+authors = [
+    {name = "Brainwave", email = "2094360+brainwave@users.noreply.github.com"},
+]
+dependencies = ["ipykernel>=6.29.5"]
+requires-python = "==3.12.*"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
+license = {text = "None"}
 
 
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.29.5"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.pdm]
+distribution = false
