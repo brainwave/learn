@@ -1,0 +1,15 @@
+[project]
+name = "C0_Python_For_Data_Science"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Brainwave", email = "2094360+brainwave@users.noreply.github.com"},
+]
+dependencies = ["ipykernel>=6.29.5", "nbconvert>=7.16.4", "matplotlib>=3.9.2", "seaborn>=0.13.2"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "None"}
+
+
+[tool.pdm]
+distribution = false

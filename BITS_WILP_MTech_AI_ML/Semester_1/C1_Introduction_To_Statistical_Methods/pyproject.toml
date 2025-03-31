@@ -1,0 +1,15 @@
+[project]
+name = "C1_Introduction_To_Statistical_Methods"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Brainwave", email = "2094360+brainwave@users.noreply.github.com"},
+]
+dependencies = ["seaborn>=0.13.2", "matplotlib>=3.9.2", "numpy>=2.1.3", "ipykernel>=6.29.5", "scikit-learn>=1.5.2"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "None"}
+
+
+[tool.pdm]
+distribution = false
